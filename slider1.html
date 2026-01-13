@@ -127,11 +127,12 @@
 /* Адаптивность */
 @media (max-width: 768px) {
     .feedback-slide {
-        min-width: 300px;
+        min-width: 280px;
+        max-width: 280px
     }
     
     .feedback-slide iframe {
-        width: 300px;
+        width: 280px;
         height: 150px;
     }
     
@@ -147,12 +148,16 @@
 }
 
 @media (max-width: 480px) {
+    .custom-feedback-slider-container{
+        padding-left: 5px;
+    }
     .feedback-slide {
-        min-width: 250px;
+        min-width: 150px;
+        max-width:230px;
     }
     
     .feedback-slide iframe {
-        width: 250px;
+        width: 230px;
         height: 120px;
     }
 }
@@ -190,6 +195,10 @@ document.addEventListener('DOMContentLoaded', function() {
         autoPlaySetInterval = setInterval(() => {
         if (currentPosition > maxPosition) {
             currentPosition -= slideWidth;
+            moveSlider();
+        }
+        if (currentPosition <= maxPosition) {
+            currentPosition = 0;
             moveSlider();
         }
         }, 3000);
